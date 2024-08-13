@@ -1,5 +1,15 @@
 # 计算机理论
 
+## B+树和LSM树的优缺点
+
+B+索引树和log型（append）文件操作（数据库WAL日志）是数据读写的两个极端。
+
+B+树读效率高而写效率差；
+
+log型文件操作写效率高而读效率差；
+
+因此要在排序和log型文件操作之间做个折中，于是就引入了**log-structed merge tree**模型，通过名称可以看出LSM既有日志型的文件操作，提升写效率，又在每个`sstable`中排序，保证了查询效率。
+
 ## LSM存储模型
 
 查找primary-key的过程很高效，但是调整B+树的磁盘IO开销却很大，因此关系型数据库mysql的写效率一直饱受诟病。**那有没有一种替代B+树的数据组织模型，在不太影响读效率的前提下，提高数据的写效率（随机写->顺序写）**
@@ -39,3 +49,6 @@ LSM树(Log-Structured Merge-Tree)是一种针对磁盘存储的数据结构,它�
    * LSM树需要定期进行文件合并和压缩等操作,这增加了系统复杂度和维护成本。
 2. 更高的写放大:
    * 由于要将数据从内存刷新到磁盘,再进行合并操作,LSM树会产生较高的写放大(Write Amplification)。
+3. LSM-Tree大量写优于B-Tree的原因
+   1. **multi-page block**：不同于B-Tree，LSM-Tree的延时写(数据可以积攒)可以有效的利用multi-page block，在Rolling Merge的过程中，一次从C1中读出多个连续pages，与C0进行Merge，然后一次向C1写回这些连续pages，这样有效利用单次I/O完成多个pages的读写（B-Tree在此场景下无法利用multi-page的优势）
+   2. **batch**：同样因为延迟写，LSM-Tree可以在Rolling Merge中，通过一次I/O批量向C1写入C0多条数据，那么这多条数据就均摊了这一次I/O，减少磁盘的I/O开销
