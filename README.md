@@ -56,5 +56,12 @@ Eventually consistent(最终一致性)
 
 阶段三:doCommit,增加超时机制，防止阻塞
 
+### Zookeeper和Paxos
 
+* 组成Zookeeper集群的每台机器都会在`内存中维护当前的服务器状态`，并且`每台机器之间都相互保持通信`，只有`存在半数以上`的服务器才能对外提供服务。
+* 顺序访问，每个客户端的每个更新请求，Zookeeper都会为其分配一个`全局唯一的递增编号`，其反映了所有事务操作的先后顺序。
+* 高性能，Zookeeper将`全量数据存储在内存中`，并且直接服务于客户端的所有非事务请求，因此适用于`以读操作为主`的应用场景。
 
+B+树 数据之间单链表，页之间双链表 ，3-4层 ，每个节点存100个ID 100\*100\*100= 10亿
+
+<figure><img src=".gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
