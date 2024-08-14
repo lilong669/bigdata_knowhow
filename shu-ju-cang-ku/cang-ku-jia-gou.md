@@ -27,3 +27,27 @@ DWM
 Data Market
 
 面向需求的数据集市层，利用DWD DWS DWM 再做对接需求的工作
+
+### 数据采集传输
+
+* FLume、Kafka、Sqoop(异构离线数据采集)、DataX(异构离线数据采集)
+
+### 数据存储
+
+* Mysql(business data)
+* HDFS(source)
+* Hbase(ads)
+* Redis(ads)
+* Jindofs(ods、dwd)
+* MongoDb(爬虫)
+
+### 数据计算
+
+* Hive(默认MR)、Tez、Spark、Flink
+
+### 数据查询
+
+* Presto、Druid、Kylin、Impala
+
+
+
