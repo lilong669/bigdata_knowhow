@@ -18,4 +18,4 @@
 ## AI TOOL
 
 * [自动化建表语句](ai-tool/zi-dong-hua-jian-biao-yu-ju.md)
-* [Page 1](ai-tool/page-1.md)
+* [自动化查询语句](ai-tool/zi-dong-hua-cha-xun-yu-ju.md)
