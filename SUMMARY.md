@@ -14,3 +14,8 @@
   * [Page](shu-ju-ji-cheng/sap-dataservices/page.md)
 * [星环数据集成模块](shu-ju-ji-cheng/xing-huan-shu-ju-ji-cheng-mo-kuai/README.md)
   * [触发任务流API](shu-ju-ji-cheng/xing-huan-shu-ju-ji-cheng-mo-kuai/chu-fa-ren-wu-liu-api.md)
+
+## AI TOOL
+
+* [自动化建表语句](ai-tool/zi-dong-hua-jian-biao-yu-ju.md)
+* [Page 1](ai-tool/page-1.md)
